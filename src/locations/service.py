@@ -9,8 +9,9 @@ class LocationService:
     repository: LocationRepository
 
     async def get_all(self) -> list[LocationResponse]:
-        db_records = self.repository.get_all()
-        return [record.to_dict() for record in db_records]
+        db_records = await self.repository.get_all()
+        dto = [LocationResponse.model_validate(record.to_dict()) for record in db_records]
+        return dto
 
     async def create(self, data: LocationCreate) -> int:
         return self.repository.create(data.model_dump())
