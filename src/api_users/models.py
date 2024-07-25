@@ -1,9 +1,8 @@
 from typing import Any
 
 from peewee import AutoField, CharField, Model
-from database.db_config import db
 
-# db = SqliteDatabase("sqldb.db")
+from database.db_config import db
 
 
 class APIUser(Model):
