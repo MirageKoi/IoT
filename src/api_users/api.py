@@ -1,5 +1,4 @@
 from dataclasses import dataclass
-from typing import Any
 
 from aiohttp import web
 
@@ -39,5 +38,5 @@ class APIUsersAPI:
 
     async def delete_user(self, request: web.Request):
         _id = int(request.match_info["id"])
-        self.service.delete(_id)
-        return web.json_response(text="all cool", status=204)
+        await self.service.delete(_id)
+        return web.json_response(text="Success", status=204)
